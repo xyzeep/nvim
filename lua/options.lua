@@ -25,14 +25,18 @@ vim.opt.termguicolors = true
 vim.g.mapleader = " "
 -- remove padding around the nvim window
 vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
-    callback = function()
-        local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-        if not normal.bg then return end
-        io.write(string.format("\027]11;#%06x\027\\", normal.bg))
-    end,
+	callback = function()
+		local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+		if not normal.bg then
+			return
+		end
+		io.write(string.format("\027]11;#%06x\027\\", normal.bg))
+	end,
 })
 
 -- when quitting, restores the terminal state
 vim.api.nvim_create_autocmd("UILeave", {
-    callback = function() io.write("\027]111\027\\") end,
+	callback = function()
+		io.write("\027]111\027\\")
+	end,
 })

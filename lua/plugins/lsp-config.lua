@@ -11,7 +11,7 @@ return {
         "mason-org/mason-lspconfig.nvim",
         config = function()
         require("mason-lspconfig").setup({
-            ensure_installed = {"lua_ls", "pylsp"}
+            ensure_installed = {"lua_ls", "pylsp", "ts_ls", "eslint", "emmet_ls", "clangd"}
         })
         end
     },
