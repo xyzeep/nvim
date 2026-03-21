@@ -1,39 +1,39 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
-	lazy = false,
-	build = ":TSUpdate",
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
 
-	config = function()
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"lua",
-				"c",
-				"vim",
-				"vimdoc",
-				"query",
-				"markdown",
-				"markdown_inline",
-				"javascript",
-				"tsx",
-			},
-			auto_install = true,
-			highlight = {
-				enable = true,
-				disable = { "javascript" },
-			},
+  config = function()
+    require("nvim-treesitter.config").setup({
+        ensure_installed = {
+          "c",
+          "cpp",
+          "python",
+          "html",
+          "css",
+          "matlab",
+          "javascript",
+          "lua",
+          "vim",
+          "vimdoc",
+          "query"
+        },
 
-			compiler = { "zig", "gcc" },
+        sync_install = false,
+        auto_install = true,
 
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<Leader>ss", -- set to `false` to disable one of the mappings
-					node_incremental = "<Leader>v",
-					scope_incremental = "<Leader>sc",
-					node_decremental = "<Leader>V",
-				},
-			},
-		})
-	end,
+        autopairs = {
+          enable = true,
+        },
+
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
+
+        indent = {
+          enable = true,
+          --disable = { "python", "c" } -- these and some other langs don't work well
+        },
+      })
+  end
 }
